@@ -1,10 +1,5 @@
 pipeline {
-    agent { 
-        any {
-            image 'cypress/base:10' 
-            args '-p 3000:3000'
-        } 
-    }    
+    agent { docker 'cypress/base:10' }  
     environment {
         CI = 'true' 
     }
@@ -31,8 +26,7 @@ pipeline {
 
     post {
         always {
-           sh 'run reporting commands etc..'
-   
+           sh 'echo "done"'
         }
     } 
 }
