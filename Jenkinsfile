@@ -5,11 +5,13 @@ pipeline {
             args '-p 3000:3000'
         } 
     }    
-
+    environment {
+        CI = 'true' 
+    }
     stages {
         stage('Install Dependencies') {
             steps {
-                sh "npm ci"
+                sh "npm install"
                 sh "npx cypress verify"
             }
         }
@@ -21,7 +23,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "CI=1 npx cypress run --browser"
+                    sh "npx cypress run --browser"
                 } 
             }
         }                
