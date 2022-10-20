@@ -1,31 +1,29 @@
 pipeline {
-
-    agent { dockerfile true }
-
-    triggers {
-         cron('H 08 * * *')
-    }
-    
-    parameters {
-        choice(name: 'BROWSER', choices: ['chrome', 'electron', 'firefox'], description: 'Pick the web browser you want to use to run your scripts')
-        choice(name: 'ENVIRONMENT', choices: ['stage','dev', 'prod'], description: 'Pick the environment to test against')
-        choice(name: 'TEST', choices: ['@regression','@smoke'], description: 'Pick the type of test to runned')
-    }
-   
+    agent { 
+        docker {
+            image 'cypress/base:latest' 
+            args '-p 3000:3000'
+        } 
+    }    
     stages {
-        stage('Run Tests') {
-            parallel {
-                stage('Test Home') {
-                    steps {
-                        script {
-                            sh "npx cypress run --browser ${BROWSER} --env configFile=${ENVIRONMENT}"
-                        } 
-                    }
-                }
-                
+        stage('Install Dependencies') {
+            steps {
+                sh "npm ci"
+                sh "npx cypress verify"
             }
         }
-    }
+        stage('Build') { 
+            steps {
+                sh 'npm run build'
+                }
+            }
+        stage('Test') {
+            steps {
+                script {
+                    sh "CI=1 npx cypress run --browser"
+                } 
+            }
+        }                
     post {
         always {
            sh 'run reporting commands etc..'
