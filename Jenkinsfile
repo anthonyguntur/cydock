@@ -1,12 +1,13 @@
 pipeline {
     agent any
+    tools {nodejs "NodeJS"}
     environment {
        CHROME_BIN = '/bin/google-chrome'
     }
     stages {
         stage('Install Dependencies') {
             steps {
-                sh "apk add nodejs"
+                sh "sudo ln -sf "$(which node)" /usr/bin/node"
                 sh "echo $PATH"
                 sh "npm install"
                 sh "npx cypress verify"
