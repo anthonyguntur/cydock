@@ -1,7 +1,8 @@
 pipeline {
-    agent { docker 'cypress/base:10' }  
+    agent any
+    tools {nodejs "NodeJS"}
     environment {
-        CI = 'true' 
+       CHROME_BIN = '/bin/google-chrome'
     }
     stages {
         stage('Install Dependencies') {
@@ -18,9 +19,14 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "npx cypress run --browser"
+                    sh "npx cypress run"
                 } 
             }
-        }                
+        }    
+        stage('Deploy') {
+           steps {
+               echo 'Deploying....'
+           }
+       }            
     }
 }
