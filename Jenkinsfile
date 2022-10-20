@@ -7,8 +7,6 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh "sudo ln -sf "$(which node)" /usr/bin/node"
-                sh "echo $PATH"
                 sh "npm install"
                 sh "npx cypress verify"
             }
