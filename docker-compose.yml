@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  jenkins:
+    image: jenkinsci/blueocean:latest
+    container_name: jenkins
+    ports:
+      - 8080:8080
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - npm-cache:/root/.npm
+      - cypress-cache:/root/.cache
+
+volumes:
+  jenkins-data:
+  npm-cache:
+  cypress-cache:
