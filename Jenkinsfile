@@ -1,10 +1,11 @@
 pipeline {
     agent { 
-        docker {
-            image 'cypress/base:latest' 
+        any {
+            image 'cypress/base:10' 
             args '-p 3000:3000'
         } 
     }    
+
     stages {
         stage('Install Dependencies') {
             steps {
@@ -25,6 +26,7 @@ pipeline {
             }
         }                
     }
+
     post {
         always {
            sh 'run reporting commands etc..'
