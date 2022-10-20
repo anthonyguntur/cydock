@@ -23,10 +23,4 @@ pipeline {
             }
         }                
     }
-
-    post {
-        always {
-           sh 'echo "done"'
-        }
-    } 
 }
