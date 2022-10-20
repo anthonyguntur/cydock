@@ -24,6 +24,7 @@ pipeline {
                 } 
             }
         }                
+    }
     post {
         always {
            sh 'run reporting commands etc..'
