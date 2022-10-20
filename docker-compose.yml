@@ -9,7 +9,6 @@ services:
             - jenkins-data:/var/jenkins_home
             - npm-cache:/root/.npm
             - cypress-cache:/root/.cache
-            - /var/run/docker.sock:/var/run/docker.sock
 volumes:
     jenkins-data:
     npm-cache:
