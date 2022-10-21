@@ -38,7 +38,7 @@ pipeline {
         stage('Testing') {
             steps {
                 script {
-                    sh "cypress run"
+                    sh "npx cypress run --spec 'cypress/e2e/1-getting-started/*' --config video=false"
                 } 
             }
         }    
