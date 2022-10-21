@@ -7,9 +7,9 @@ pipeline {
     }
 
     tools {
-//      nodejs "node"
+        nodejs "node"
         // "org.jenkinsci.plugins.docker.commons.tools.DockerTool" "docker"
-        "jenkins.plugins.nodejs.tools.NodeJSInstallation" "node"
+        // "jenkins.plugins.nodejs.tools.NodeJSInstallation" "node"
     }
 
     // parameters {
@@ -29,7 +29,7 @@ pipeline {
                     sh 'npm --version'
                     sh 'npm i'
                     // sh 'npx run cypress verify'
-                    sh 'npx cypress --version'
+                    sh 'cypress --version'
                 }
             }
         // stage('start local server') {
