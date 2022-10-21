@@ -26,7 +26,7 @@ pipeline {
                     echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
                     // sh 'npm install'
                     // sh 'npx run cypress verify'
-                    sh 'npx cypress --version'
+                    sh 'cypress --version'
                 }
             }
         // stage('start local server') {
