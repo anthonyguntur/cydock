@@ -6,11 +6,11 @@ pipeline {
         }
     }
 
-    tools {
+
         tool name: 'NodeJs', type: 'nodejs'
         // "org.jenkinsci.plugins.docker.commons.tools.DockerTool" "docker"
         // "jenkins.plugins.nodejs.tools.NodeJSInstallation" "node"
-    }
+    
 
     // parameters {
     //     string(name: 'SPEC', defaultValue: "cypress/e2e/**/**", description: "Enter the script path that you want to execute")
