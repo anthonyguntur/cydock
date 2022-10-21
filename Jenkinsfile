@@ -24,7 +24,7 @@ pipeline {
         stage('Build') { 
             steps {
                     echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                    sh 'npm install'
+                    // sh 'npm install'
                     sh 'npm run cypress verify'
                 }
             }
@@ -38,7 +38,7 @@ pipeline {
         stage('Testing') {
             steps {
                 script {
-                    sh "npm run test"
+                    sh "npm cypress run"
                 } 
             }
         }    
