@@ -1,10 +1,10 @@
 pipeline {
-    agent {
-        // this image provides everything needed to run Cypress
-        docker {
-            image 'cypress/base:12'
-        }
-    }
+    // agent {
+    //     // this image provides everything needed to run Cypress
+    //     docker {
+    //         image 'cypress/base:12'
+    //     }
+    // }
 
 
         // "org.jenkinsci.plugins.docker.commons.tools.DockerTool" "docker"
