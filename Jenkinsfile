@@ -7,7 +7,7 @@ pipeline {
     }
 
     tools {
-        nodejs "NodeJs"
+        tool name: 'NodeJs', type: 'nodejs'
         // "org.jenkinsci.plugins.docker.commons.tools.DockerTool" "docker"
         // "jenkins.plugins.nodejs.tools.NodeJSInstallation" "node"
     }
@@ -23,17 +23,14 @@ pipeline {
 
     stages {
         stage('Build') { 
-            steps {
-                    nodejs(nodeJSInstallationName: 'NodeJs') {
-                        echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                        sh 'node --version'
-                        sh 'npm --version'
-                        sh 'npm i'
-                        // sh 'npx run cypress verify'
-                        sh 'cypress --version'
-
-                        sh 'npm config ls'
-                    }
+            steps {                    
+                    echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                    sh 'npm config ls'
+                    sh 'node --version'
+                    sh 'npm --version'
+                    sh 'npm i'
+                    // sh 'npx run cypress verify'
+                    sh 'cypress --version'                    
                 }
             }
         // stage('start local server') {
