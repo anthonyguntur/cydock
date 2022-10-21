@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+    tools {
+        nodejs "NodeJs"
+    }
     // agent {
     //     // this image provides everything needed to run Cypress
     //     docker {
