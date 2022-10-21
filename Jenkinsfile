@@ -6,10 +6,10 @@ pipeline {
         }
     }
 
-    // tools {
-    //     nodejs "node"
-    //     "org.jenkinsci.plugins.docker.commons.tools.DockerTool" "docker"
-    // }
+    tools {
+        nodejs "node"
+        // "org.jenkinsci.plugins.docker.commons.tools.DockerTool" "docker"
+    }
 
     // parameters {
     //     string(name: 'SPEC', defaultValue: "cypress/e2e/**/**", description: "Enter the script path that you want to execute")
@@ -26,7 +26,6 @@ pipeline {
                     echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
                     sh 'node --version'
                     sh 'npm --version'
-                    sh 'npm cache clean --force'
                     sh 'npm i'
                     // sh 'npx run cypress verify'
                     sh 'npx cypress --version'
