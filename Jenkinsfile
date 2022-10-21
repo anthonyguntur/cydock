@@ -7,7 +7,7 @@ pipeline {
     }
 
     tools {
-        nodejs "node"
+        nodejs "NodeJs"
         // "org.jenkinsci.plugins.docker.commons.tools.DockerTool" "docker"
         // "jenkins.plugins.nodejs.tools.NodeJSInstallation" "node"
     }
