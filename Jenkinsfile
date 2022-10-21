@@ -1,16 +1,22 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'SPEC', default: "cypress/e2e/**/**", description: "Enter the script path that you want to execute")
+        choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: "Choice the browser where you want to execute your scripts")
+    }   
     tools {nodejs "node"}
+
+    options {
+        ansiColor('xterm')
+    }
 
     stages {
         stage('Install Dependencies') {
             steps {
                 sh "node --version"
                 sh "npm config ls"
-                sh "npm install"
-                sh "apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb"
-                sh "npx cypress verify"
+                sh "npm install"         
             }
         }
         stage('Build') { 
@@ -18,16 +24,16 @@ pipeline {
                 sh 'npm run build'
                 }
             }
-        stage('Test') {
+        stage('Testing') {
             steps {
                 script {
-                    sh "npx cypress run"
+                    sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
                 } 
             }
         }    
-        stage('Deploy') {
+        stage('Deploying') {
            steps {
-               echo 'Deploying....'
+               echo 'Deploying the application...'
            }
        }            
     }
