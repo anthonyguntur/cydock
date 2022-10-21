@@ -1,9 +1,13 @@
 pipeline {
-    agent any
+    agent {
+    // this image provides everything needed to run Cypress
+        docker {
+            image 'cypress/base:10'
+        }
+    }
 
     tools {
         nodejs "node"
-        xvfb "Xvfb"
     }
 
     parameters {
@@ -31,7 +35,7 @@ pipeline {
         stage('Testing') {
             steps {
                 script {
-                    sh "npx cypress run --browser ${BROWSER} --config video=false"
+                    sh "npm run test"
                 } 
             }
         }    

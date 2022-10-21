@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "prettify": "prettier -l --write \"**/*.js\"",
-        "test": "jest",
+        "test": "cypress run",
         "dev": "nodemon app/index.js"
     },
     "dependencies": {
