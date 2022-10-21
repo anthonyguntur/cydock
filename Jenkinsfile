@@ -30,6 +30,7 @@ pipeline {
             steps {                    
                     echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
                     sh 'npm config ls'
+                    sh 'npm cache clean'
                     sh 'npm install -g cypress'
                     sh 'node --version'
                     sh 'npm --version'
