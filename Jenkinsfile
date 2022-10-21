@@ -12,15 +12,6 @@ pipeline {
         // "jenkins.plugins.nodejs.tools.NodeJSInstallation" "node"
     }
 
-    node {
-        env.NODEJS_HOME = "${tool 'NodeJs'}"
-        // on linux / mac
-        env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
-        // on windows
-        env.PATH="${env.NODEJS_HOME};${env.PATH}"
-        sh 'npm --version'
-    }
-
     // parameters {
     //     string(name: 'SPEC', defaultValue: "cypress/e2e/**/**", description: "Enter the script path that you want to execute")
     //     choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: "Choice the browser where you want to execute your scripts")
