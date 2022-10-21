@@ -33,7 +33,7 @@ pipeline {
                     sh 'node --version'
                     sh 'npm --version'
                     // sh 'npm i'
-                    sh 'npx run cypress verify'
+                    sh 'npx cypress verify'
                     sh 'cypress --version'                    
                 }
             }
