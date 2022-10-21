@@ -4,13 +4,17 @@ pipeline {
     tools {nodejs "node"}
 
     environment {
+       NODEJS_HOME = "${tool node}"
+       PATH="${NODEJS_HOME}:${PATH}"
        CHROME_BIN = '/bin/google-chrome'
     }
 
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'npm config ls'
+                sh "echo PATH"
+                sh "node -version"
+                sh "npm config ls"
                 sh "npm install"
                 sh "npx cypress verify"
             }
