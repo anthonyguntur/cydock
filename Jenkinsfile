@@ -2,7 +2,7 @@ pipeline {
     agent {
         // this image provides everything needed to run Cypress
         docker {
-            image 'cypress/included:3.4.0'
+            image 'cypress/base:12'
         }
     }
 
@@ -24,9 +24,9 @@ pipeline {
         stage('Build') { 
             steps {
                     echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                    // sh 'npm install'
+                    sh 'npm install'
                     // sh 'npx run cypress verify'
-                    sh 'cypress --version'
+                    sh 'npx cypress --version'
                 }
             }
         // stage('start local server') {
