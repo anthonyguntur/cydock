@@ -24,12 +24,16 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                    echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                    sh 'node --version'
-                    sh 'npm --version'
-                    sh 'npm i'
-                    // sh 'npx run cypress verify'
-                    sh 'cypress --version'
+                    nodejs(nodeJSInstallationName: 'NodeJs') {
+                        echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                        sh 'node --version'
+                        sh 'npm --version'
+                        sh 'npm i'
+                        // sh 'npx run cypress verify'
+                        sh 'cypress --version'
+
+                        sh 'npm config ls'
+                    }
                 }
             }
         // stage('start local server') {
