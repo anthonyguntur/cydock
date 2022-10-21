@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Build') { 
             steps {
-                sh 'npm run build'
+                    sh 'Building the application..'
                 }
             }
         stage('Testing') {
@@ -34,7 +34,7 @@ pipeline {
         }    
         stage('Deploying') {
            steps {
-               echo 'Deploying the application...'
+               echo 'Deploying the application..'
            }
        }            
     }
