@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh "node -version"
+                sh "node --version"
                 sh "npm config ls"
                 sh "npm install"
                 sh "npx cypress verify"
