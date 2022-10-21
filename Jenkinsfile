@@ -28,7 +28,7 @@ pipeline {
         stage('Testing') {
             steps {
                 script {
-                    sh "npx cypress run --browser ${BROWSER} --record false"
+                    sh "npx cypress run --browser ${BROWSER} --config video=false"
                 } 
             }
         }    
